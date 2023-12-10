@@ -1,0 +1,28 @@
+# CPServiceSubnetGroup:
+#   Type: AWS::ElastiCache::SubnetGroup
+#   Properties:
+#     Description: Subnet group for Elasticache Redis cluster
+#     SubnetIds:
+#       - ${ssm:/LAMBDA_SUBNET_A}
+#       - ${ssm:/LAMBDA_SUBNET_B}
+#       - ${ssm:/LAMBDA_SUBNET_C}
+
+# RedisCluster:
+#   Type: AWS::ElastiCache::CacheCluster
+#   Properties:
+#     CacheNodeType: cache.t2.micro
+#     Engine: redis
+#     NumCacheNodes: 1
+#     CacheSubnetGroupName: !Ref CPServiceSubnetGroup
+#     VpcSecurityGroupIds:
+#       - ${ssm:/LAMBDA_DEFAULT_SG}
+#     EngineVersion: 6.x
+#     Port: 6379
+
+# CPProposalQueue:
+#   Type: AWS::SQS::Queue
+#   Properties:
+#     QueueName: cp-proposal-fifo-queue.fifo
+#     FifoQueue: true
+#     ContentBasedDeduplication: false
+#     DelaySeconds: ${self:custom.defaultParameters.queueDelaySecs}

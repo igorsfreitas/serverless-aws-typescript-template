@@ -1,0 +1,28 @@
+service: core-app-ts
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+provider:
+  name: aws
+  stage: ${opt:stage, 'local'}
+  runtime: nodejs16.x
+  region: sa-east-1
+  endpointType: PRIVATE
+  environment: ${file(./serverless/provider/environment.yml)}
+custom:
+  stage: ${self:provider.stage}
+  prefix: ${self:custom.stage}
+  esbuild: ${file(./serverless/custom/esbuild.yml)}
+  defaultParameters: ${file(./serverless/custom/default-parameter.yml)}
+
+# resources:
+#  Resources: ${file(./serverless/resources/resources.yml)}
+#  Outputs: ${file(./serverless/resources/outputs.yml)}
+
+package:
+  individually: true
+  include:
+    - src/**
+
+functions: ${file(./serverless/functions.yml)}

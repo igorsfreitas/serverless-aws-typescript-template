@@ -1,0 +1,20 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16.15
+    commands:
+      - echo npm -v
+      - echo node -v
+      - echo installing yarn
+      - npm install -g yarn
+      - yarn cache clean
+      - yarn global add serverless
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - yarn clean
+      - yarn install
+  build:
+    commands:
+      - sls deploy --stage dev --region sa-east-1

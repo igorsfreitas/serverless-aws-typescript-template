@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  core-app-db:
+    container_name: core-app-db
+    image: postgres:latest
+    restart: always
+    ports:
+    - "5432:5432"
+    volumes:
+    - /data/postgres:/data/postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: core_app_db
+  redis:
+    image: "redis:alpine"
+    container_name: redis-cp
+    restart: always
+    command: redis-server --requirepass Redis2023
+    ports:
+    - "6379:6379"

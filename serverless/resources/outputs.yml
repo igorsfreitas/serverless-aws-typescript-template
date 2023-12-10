@@ -1,0 +1,6 @@
+CoreAppCore:
+  Description: CoreAppCore
+  Export:
+    Name: core-app-ts-core
+  Value:
+    Fn::GetAtt: CoreAppCore.Arn

@@ -1,0 +1,25 @@
+# findOneDeleteSchedule:
+#   handler: src/handlers/delete-schedule/index.findOne
+#   events:
+#     - http:
+#         path: /delete-schedule/{id}
+#         method: GET
+# updateDeleteSchedule:
+#   handler: src/handlers/delete-schedule/index.update
+#   events:
+#     - http:
+#         path: /delete-schedule/{id}
+#         method: PATCH
+removeDeleteSchedule:
+  handler: src/handlers/delete-schedule/index.remove
+  events:
+    - http:
+        path: /delete-schedule
+        method: DELETE
+teste:
+  handler: src/handlers/delete-schedule/index.teste
+  events:
+    - http:
+        path: /teste/{id}
+        method: GET
+  

@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Serverless Offline",
+            "program": "${workspaceFolder}/node_modules/serverless/bin/serverless",
+            "args": [
+                "offline",
+                "start",
+                "--host",
+                "0.0.0.0",
+                "--reloadHandler",
+                "--noTimeout",
+            ],
+            "protocol": "inspector",
+            "runtimeExecutable": "node",
+            "env": {
+                "ACCESS_KEY_ID": "ASIARADQI43HWLBHOMJV",
+                "SECRET_ACCESS_KEY": "/q17nJgSnuqLp6iuh8XNM14rfZGw6PyMLPVUkj+g",
+                "AWS_ACCOUNT_ID": "ASIARADQI43HWLBHOMJV",
+                "SESSION_TOKEN": "IQoJb3JpZ2luX2VjEHgaCXNhLWVhc3QtMSJIMEYCIQC2IAaWRU60JSZtYgDVQoLhPToNnh0Uv/jui+QTzSTUQwIhAItzFTYpboaWYxppOqB6qoeDi4WIBiAUSVHCi0gw6RNuKrQDCOH//////////wEQABoMMDY4OTU0OTQxMTM1IgwxohHDKUP3fHSQfIwqiAO5GXPazc0XJpXYz6i0oODLOt07EeXpJ9pBa8keeM3yCX5i3nwUxv+vWApSVI8SwD6t8a8AvuyeV6HxGvZ+OoIpXFO99zHbcPQhszywdrXcaC87qHN/PCytb628nLajzipLb3ftMZanu9tsSrSpJYEXt+X8kqfgLN9xMWosPAaqNwqkj2I+ajw0vbuM9InnimjxNFRjh841ArU3MABrQBxDTHUtR4avl+/i02cUtonrtnCP81g0n6Rht333xdr/KcdBYV+QbTWi7obPNCQO+IVvwxvV8w/iWLlLqcebW1rF1/h7aLcoFJdVBUuduIrA4b3McSvY8x6cKyonxIi+IZLhk7wFuN0G2urrwH7XPDPhkybXeICdOPY9UFsu2fKgWVx1HyZabOEbZ1BBof6VNgCLtlGvtNLWW8eaNV8WMneJJDOGmh8yB8dNJfTCYdmlTm9Rsu5n2s7uJLWMNbHvejpopZE5IqLbTqGZFIXgYiHrUIr013a7+CjTz1/E/UUSDLuth7TrxEd6BjDZgtSrBjqlASwKO+ti41iQt1Mmmlx+oQ5+2/JTkAIRe/u6g80wYnUNNWHN+wZ/sSl717VnGvoJR3Q16oEenElP9Tj1Y+5aYBQoTCuhF8GcveYf+rlFG9B3v+i0hgcygef6XuLb/PGrF3/HfyC7i/faG//tPU+lWTF86W0/OJ0ooyo9wxM5Uq5Z+rYGdOFqG0lXb/mjhWnKj0h55Rp1lGyO8htIkRdret0zRGeQOA=="
+            },
+            "windows": {
+                "program": "${workspaceFolder}\\node_modules\\serverless\\bin\\serverless"
+            },
+            "console": "externalTerminal"
+        },
+    ]
+}

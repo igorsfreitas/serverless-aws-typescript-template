@@ -1,0 +1,101 @@
+image: node:16
+
+pipelines:
+  pull-requests:
+    "**":
+      - parallel:
+          - step:
+              name: Run tests
+              caches:
+                - node
+              script:
+                - npm install
+                - npm test
+          - step:
+              name: Check linting
+              caches:
+                - node
+              script:
+                - npm install
+                - npm run lint
+  branches:
+    main:
+      - parallel:
+          - step:
+              name: Run tests
+              caches:
+                - node
+              script:
+                - npm install
+                - npm test
+          - step:
+              name: Check linting
+              caches:
+                - node
+              script:
+                - npm install
+                - npm run lint
+      - step:
+          name: Deploy to Prod
+          deployment: Production
+          script:
+            - npm i -g serverless
+            - npm i
+            - export ACCESS_KEY_ID=${ACCESS_KEY_ID}
+            - export SECRET_ACCESS_KEY=${SECRET_ACCESS_KEY}
+            - export AWS_ACCOUNT_ID=${AWS_ACCOUNT_ID}
+            - sls deploy --stage prd --region ${AWS_DEFAULT_REGION}
+
+    develop:
+      - parallel:
+          - step:
+              name: Run tests
+              caches:
+                - node
+              script:
+                - npm install
+                - npm test
+          - step:
+              name: Check linting
+              caches:
+                - node
+              script:
+                - npm install
+                - npm run lint
+      - step:
+          name: Deploy to Dev
+          deployment: Develop
+          script:
+            - npm i -g serverless
+            - npm i
+            - export ACCESS_KEY_ID=${ACCESS_KEY_ID}
+            - export SECRET_ACCESS_KEY=${SECRET_ACCESS_KEY}
+            - export AWS_ACCOUNT_ID=${AWS_ACCOUNT_ID}
+            - sls deploy --stage dev --region ${AWS_DEFAULT_REGION}
+
+    release/*:
+      - parallel:
+          - step:
+              name: Run tests
+              caches:
+                - node
+              script:
+                - npm install
+                - npm test
+          - step:
+              name: Check linting
+              caches:
+                - node
+              script:
+                - npm install
+                - npm run lint
+      - step:
+          name: Deploy to staging
+          deployment: Staging
+          script:
+            - npm i -g serverless
+            - npm i
+            - export ACCESS_KEY_ID=${ACCESS_KEY_ID}
+            - export SECRET_ACCESS_KEY=${SECRET_ACCESS_KEY}
+            - export AWS_ACCOUNT_ID=${AWS_ACCOUNT_ID}
+            - sls deploy --stage qa --region ${AWS_DEFAULT_REGION}
